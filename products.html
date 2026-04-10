@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — Abhinav Goswami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+  <style>
+    .products-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 4rem;
+    }
+
+    .product-item {
+      background: var(--bg);
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .product-item:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .product-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-index {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+    }
+
+    .product-name {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+
+    .product-url {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      display: inline-block;
+      margin-bottom: 1.3rem;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .product-url:hover {
+      color: var(--ink);
+      border-color: var(--ink-soft);
+    }
+
+    .product-desc {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      color: var(--ink-mid);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .product-status {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .status-live::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #3d9e56;
+      border-radius: 50%;
+    }
+
+    .visit-link {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      text-align: right;
+    }
+
+    .visit-link:hover {
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-name">Abhinav Goswami</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="travel.html">Travel</a>
+      <a href="blog.html">Writing</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero" style="padding-left: var(--pad); padding-right: var(--pad); max-width: var(--max); margin: 0 auto;">
+      <a href="index.html" class="back-link">← back</a>
+      <h1>SaaS<br /><em>Products</em></h1>
+      <p class="subtitle">Things I built, shipped, and run. From idea to people using it.</p>
+    </section>
+
+    <div class="rule"></div>
+
+    <div style="max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);">
+      <div style="padding-top: 3.5rem;">
+
+        <p class="section-head">Live products</p>
+
+        <div class="products-list">
+
+          <!-- ── GuestLoops ── -->
+          <div class="product-item">
+            <div class="product-top">
+              <div>
+                <div class="product-index">01</div>
+                <h2 class="product-name">GuestLoops</h2>
+                <a href="https://guestloops.com" target="_blank" rel="noopener" class="product-url">guestloops.com ↗</a>
+                <p class="product-desc">
+                  A guest management platform built for modern hospitality. Streamlines check-ins, feedback collection, and guest communication — so hosts spend less time on admin and more time with guests.
+                </p>
+              </div>
+              <div>
+                <div class="product-status status-live">Live</div>
+                <a href="https://guestloops.com" target="_blank" rel="noopener" class="visit-link">visit site →</a>
+              </div>
+            </div>
+
+            <!-- Demo video — replace src with your actual video file or YouTube embed URL -->
+            <!-- OPTION A — local video file: <video src="videos/guestloops-demo.mp4" controls poster="videos/guestloops-thumb.jpg"> -->
+            <!-- OPTION B — YouTube: replace the src below with your YouTube embed link -->
+            <div class="demo-block" id="demo-guestloops">
+              <div class="demo-play">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="demo-label">Demo coming soon — drop a video here</span>
+            </div>
+
+          </div>
+
+          <!-- ── HoshLoop ── -->
+          <div class="product-item">
+            <div class="product-top">
+              <div>
+                <div class="product-index">02</div>
+                <h2 class="product-name">HoshLoop</h2>
+                <a href="https://hoshloop.com" target="_blank" rel="noopener" class="product-url">hoshloop.com ↗</a>
+                <p class="product-desc">
+                  A looping content platform connecting creators with their audiences through smart distribution. Built for discovery, repeat engagement, and genuine reach.
+                </p>
+              </div>
+              <div>
+                <div class="product-status status-live">Live</div>
+                <a href="https://hoshloop.com" target="_blank" rel="noopener" class="visit-link">visit site →</a>
+              </div>
+            </div>
+
+            <!-- Demo video placeholder — same as above, replace when ready -->
+            <div class="demo-block" id="demo-hoshloop">
+              <div class="demo-play">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="demo-label">Demo coming soon — drop a video here</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div style="padding-bottom: 5rem; max-width: 500px;">
+          <p class="section-head">On building</p>
+          <p style="font-family: var(--serif); font-size: 1.08rem; font-weight: 300; color: var(--ink-mid); line-height: 1.8;">
+            Every product here started as a problem I saw, got obsessed with, and couldn't stop building until it shipped. More coming.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>abhinawago.com</span>
+    <span>2026</span>
+  </footer>
+
+</body>
+</html>
