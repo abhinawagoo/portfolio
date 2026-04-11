@@ -142,6 +142,10 @@ body {
   font-family: var(--serif);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  /* Prevent any single long word from breaking layout */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 a {
@@ -209,6 +213,8 @@ main section,
 .site-nav {
   display: flex;
   gap: 2.2rem;
+  flex-wrap: wrap;         /* new links just wrap to next row */
+  justify-content: flex-end;
 }
 
 .site-nav a {
@@ -322,6 +328,10 @@ main section,
   color: var(--ink-soft);
   text-transform: uppercase;
   padding-top: 0.35rem;
+  /* Label always sticks to top even when content beside it grows long */
+  align-self: start;
+  position: sticky;
+  top: 1.5rem;
 }
 
 .about-body p {
@@ -385,7 +395,8 @@ main section,
 
 .pages-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Cards are min 220px wide — auto-fills columns, wraps new cards naturally */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
@@ -400,6 +411,8 @@ main section,
   gap: 0.5rem;
   transition: background 0.2s;
   position: relative;
+  /* Cards in the same row stretch to equal height automatically */
+  min-height: 160px;
 }
 
 .page-card:hover {

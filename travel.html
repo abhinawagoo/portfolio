@@ -78,7 +78,8 @@
 
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      /* Auto-fills: add any number of photos, they tile themselves */
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 1px;
       background: var(--rule);
       border: 1px solid var(--rule);

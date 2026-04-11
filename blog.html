@@ -69,6 +69,11 @@
       line-height: 1.6;
       margin-top: 0.4rem;
       max-width: 500px;
+      /* Clamp to 2 lines — keeps the list uniform regardless of excerpt length */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .post-date {
@@ -81,14 +86,17 @@
 
     .category-row {
       display: flex;
+      flex-wrap: wrap;   /* new categories just wrap to next row */
       gap: 1px;
       background: var(--rule);
       border: 1px solid var(--rule);
       margin-bottom: 3.5rem;
+      overflow: hidden;  /* keeps border clean when wrapping */
     }
 
     .cat-btn {
-      flex: 1;
+      flex: 1 1 auto;    /* shrinks and grows with content */
+      min-width: 80px;   /* never too squished */
       padding: 0.9rem 1rem;
       background: var(--bg);
       font-family: var(--mono);
@@ -100,6 +108,7 @@
       cursor: pointer;
       border: none;
       transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
     }
 
     .cat-btn:hover,
