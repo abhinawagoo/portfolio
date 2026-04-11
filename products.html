@@ -114,17 +114,33 @@
     .visit-link:hover {
       color: var(--ink);
     }
+
+    @media (max-width: 540px) {
+      .product-top {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .visit-link {
+        text-align: left;
+        margin-top: 0.3rem;
+      }
+
+      .product-name {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-name">Abhinav Goswami</div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="travel.html">Travel</a>
       <a href="blog.html">Writing</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
     </nav>
   </header>
 

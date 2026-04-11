@@ -107,17 +107,37 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
+    @media (max-width: 540px) {
+      .journey-item {
+        grid-template-columns: 70px 1fr;
+        gap: 1rem;
+        padding: 1.8rem 0;
+      }
+
+      .journey-date {
+        font-size: 0.65rem;
+      }
+
+      .journey-place {
+        font-size: 1.2rem;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-name">Abhinav Goswami</div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
       <a href="blog.html">Writing</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
     </nav>
   </header>
 

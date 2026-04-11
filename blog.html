@@ -107,17 +107,42 @@
       background: var(--ink);
       color: var(--bg);
     }
+
+    @media (max-width: 540px) {
+      .category-row {
+        flex-wrap: wrap;
+      }
+
+      .cat-btn {
+        flex: 0 0 calc(50% - 1px);
+        font-size: 0.65rem;
+        padding: 0.8rem 0.5rem;
+      }
+
+      .post-item {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+
+      .post-date {
+        font-size: 0.62rem;
+      }
+
+      .post-title {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-name">Abhinav Goswami</div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
       <a href="travel.html">Travel</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">dark</button>
     </nav>
   </header>
 
