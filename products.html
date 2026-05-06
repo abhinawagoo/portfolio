@@ -52,6 +52,21 @@
       line-height: 1.15;
     }
 
+    .product-main-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 0.2em 0.6em;
+      margin-left: 0.8rem;
+      vertical-align: middle;
+      position: relative;
+      top: -3px;
+    }
+
     .product-url {
       font-family: var(--mono);
       font-size: 0.75rem;
@@ -115,6 +130,75 @@
       color: var(--ink);
     }
 
+    /* ── Site preview (iframe) ── */
+    .site-preview {
+      position: relative;
+      border: 1px solid var(--rule);
+      background: var(--card-hover);
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      cursor: default;
+    }
+
+    .site-preview iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      /* slightly taller to hide scrollbar area */
+      height: calc(100% + 20px);
+      border: none;
+      pointer-events: none;
+    }
+
+    /* bottom bar always visible */
+    .preview-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 1rem;
+      background: var(--bg);
+      border-top: 1px solid var(--rule);
+    }
+
+    .preview-live {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: #3d9e56;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .preview-live::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #3d9e56;
+      border-radius: 50%;
+    }
+
+    .preview-open {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .preview-open:hover {
+      color: var(--ink);
+    }
+
     @media (max-width: 540px) {
       .product-top {
         grid-template-columns: 1fr;
@@ -161,11 +245,44 @@
 
         <div class="products-list">
 
-          <!-- ── GuestLoops ── -->
+          <!-- ── Dottle (main) ── -->
           <div class="product-item">
             <div class="product-top">
               <div>
                 <div class="product-index">01</div>
+                <h2 class="product-name">Dottle<span class="product-main-tag">Main</span></h2>
+                <a href="https://dottle.dev" target="_blank" rel="noopener" class="product-url">dottle.dev ↗</a>
+                <p class="product-desc">
+                  The flagship product. A developer-focused platform that makes it faster to ship polished, production-ready software. Built for the people who care about craft.
+                </p>
+              </div>
+              <div>
+                <div class="product-status status-live">Live</div>
+                <a href="https://dottle.dev" target="_blank" rel="noopener" class="visit-link">visit site →</a>
+              </div>
+            </div>
+
+            <div class="site-preview">
+              <iframe
+                src="https://dottle.dev"
+                title="Dottle.dev live preview"
+                loading="lazy"
+                scrolling="no"
+                tabindex="-1"
+                aria-hidden="true"
+              ></iframe>
+              <div class="preview-bar">
+                <span class="preview-live">Live preview</span>
+                <a href="https://dottle.dev" target="_blank" rel="noopener" class="preview-open">Open dottle.dev →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── GuestLoops ── -->
+          <div class="product-item">
+            <div class="product-top">
+              <div>
+                <div class="product-index">02</div>
                 <h2 class="product-name">GuestLoops</h2>
                 <a href="https://guestloops.com" target="_blank" rel="noopener" class="product-url">guestloops.com ↗</a>
                 <p class="product-desc">
@@ -178,43 +295,53 @@
               </div>
             </div>
 
-            <!-- Demo video — replace src with your actual video file or YouTube embed URL -->
-            <!-- OPTION A — local video file: <video src="videos/guestloops-demo.mp4" controls poster="videos/guestloops-thumb.jpg"> -->
-            <!-- OPTION B — YouTube: replace the src below with your YouTube embed link -->
-            <div class="demo-block" id="demo-guestloops">
-              <div class="demo-play">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <div class="site-preview">
+              <iframe
+                src="https://guestloops.com"
+                title="GuestLoops live preview"
+                loading="lazy"
+                scrolling="no"
+                tabindex="-1"
+                aria-hidden="true"
+              ></iframe>
+              <div class="preview-bar">
+                <span class="preview-live">Live preview</span>
+                <a href="https://guestloops.com" target="_blank" rel="noopener" class="preview-open">Open guestloops.com →</a>
               </div>
-              <span class="demo-label">Demo coming soon — drop a video here</span>
             </div>
-
           </div>
 
           <!-- ── HoshLoop ── -->
           <div class="product-item">
             <div class="product-top">
               <div>
-                <div class="product-index">02</div>
+                <div class="product-index">03</div>
                 <h2 class="product-name">HoshLoop</h2>
-                <a href="https://hoshloop.com" target="_blank" rel="noopener" class="product-url">hoshloop.com ↗</a>
+                <a href="https://hoshloop.vercel.app" target="_blank" rel="noopener" class="product-url">hoshloop.vercel.app ↗</a>
                 <p class="product-desc">
                   A looping content platform connecting creators with their audiences through smart distribution. Built for discovery, repeat engagement, and genuine reach.
                 </p>
               </div>
               <div>
                 <div class="product-status status-live">Live</div>
-                <a href="https://hoshloop.com" target="_blank" rel="noopener" class="visit-link">visit site →</a>
+                <a href="https://hoshloop.vercel.app" target="_blank" rel="noopener" class="visit-link">visit site →</a>
               </div>
             </div>
 
-            <!-- Demo video placeholder — same as above, replace when ready -->
-            <div class="demo-block" id="demo-hoshloop">
-              <div class="demo-play">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <div class="site-preview">
+              <iframe
+                src="https://hoshloop.vercel.app"
+                title="HoshLoop live preview"
+                loading="lazy"
+                scrolling="no"
+                tabindex="-1"
+                aria-hidden="true"
+              ></iframe>
+              <div class="preview-bar">
+                <span class="preview-live">Live preview</span>
+                <a href="https://hoshloop.vercel.app" target="_blank" rel="noopener" class="preview-open">Open hoshloop.vercel.app →</a>
               </div>
-              <span class="demo-label">Demo coming soon — drop a video here</span>
             </div>
-
           </div>
 
         </div>
