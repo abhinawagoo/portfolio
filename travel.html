@@ -16,20 +16,31 @@
       margin-bottom: 4rem;
     }
 
-    .journey-item {
-      padding: 3rem 0;
+    /* each item is now an <a> */
+    a.journey-item {
+      display: block;
+      padding: 2.8rem 0;
       border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: background 0.15s;
     }
 
-    .journey-item:first-child {
+    a.journey-item:first-child {
       border-top: 1px solid var(--rule);
+    }
+
+    a.journey-item:hover {
+      background: var(--card-hover);
+      margin: 0 calc(-1 * var(--pad));
+      padding-left: var(--pad);
+      padding-right: var(--pad);
     }
 
     .journey-meta {
       display: flex;
       align-items: baseline;
       gap: 1.2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .journey-date {
@@ -57,6 +68,7 @@
       color: var(--ink);
       line-height: 1.2;
       margin-bottom: 0.5rem;
+      transition: text-decoration-color 0.15s;
     }
 
     .journey-headline em {
@@ -65,33 +77,36 @@
       color: var(--ink-soft);
     }
 
+    a.journey-item:hover .journey-headline {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--ink-soft);
+    }
+
     .journey-place {
       font-family: var(--mono);
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-faint);
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.1rem;
     }
 
     .journey-note {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 300;
       color: var(--ink-mid);
-      line-height: 1.85;
-      max-width: 620px;
-    }
-
-    .journey-note p + p {
-      margin-top: 1em;
+      line-height: 1.8;
+      max-width: 600px;
     }
 
     .journey-highlights {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 1.4rem;
+      margin-top: 1.3rem;
     }
 
     .highlight-chip {
@@ -103,16 +118,18 @@
       padding: 0.25em 0.7em;
     }
 
-    .story-coming {
+    .journey-read {
       display: inline-block;
-      margin-top: 1.2rem;
+      margin-top: 1.3rem;
       font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--ink-faint);
-      text-transform: uppercase;
-      border-bottom: 1px dashed var(--rule);
-      padding-bottom: 0.1em;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
+
+    a.journey-item:hover .journey-read {
+      color: var(--ink);
     }
 
     .photo-grid {
@@ -148,12 +165,12 @@
     }
 
     @media (max-width: 540px) {
-      .journey-headline {
-        font-size: 1.4rem;
-      }
-
-      .photo-grid {
-        grid-template-columns: 1fr 1fr;
+      .journey-headline { font-size: 1.4rem; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      a.journey-item:hover {
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
   </style>
@@ -189,147 +206,104 @@
         <div class="journey-list">
 
           <!-- ── Japan ── -->
-          <div class="journey-item">
+          <a class="journey-item" href="travel-japan.html">
             <div class="journey-meta">
               <span class="journey-date">2024</span>
               <span class="journey-tag">Solo</span>
             </div>
             <h2 class="journey-headline">Japan — <em>Quiet Cities and the Art of Disappearing</em></h2>
             <div class="journey-place">Japan · Asia</div>
-            <div class="journey-note">
-              <p>
-                A country that functions like a poem — everything in its right place, silence respected, beauty found in the smallest corners. From the neon blur of Tokyo to the fog-wrapped temples of Kyoto, Japan rewires the way you move through the world.
-              </p>
-              <p>
-                Full story and guide coming soon.
-              </p>
-            </div>
+            <p class="journey-note">
+              A country that functions like a poem — everything in its right place, silence respected, beauty found in the smallest corners. From the neon blur of Tokyo to the fog-wrapped temples of Kyoto, Japan rewires the way you move through the world.
+            </p>
             <div class="journey-highlights">
               <span class="highlight-chip">Tokyo</span>
               <span class="highlight-chip">Kyoto</span>
               <span class="highlight-chip">Solo travel</span>
             </div>
-            <span class="story-coming">Full story coming</span>
-          </div>
+            <span class="journey-read">Read story →</span>
+          </a>
 
           <!-- ── Afghanistan ── -->
-          <div class="journey-item">
+          <a class="journey-item" href="travel-afghanistan.html">
             <div class="journey-meta">
               <span class="journey-date">2022</span>
               <span class="journey-tag">Solo · Adventure</span>
             </div>
             <h2 class="journey-headline">Afghanistan — <em>Beyond the Headlines, Into the Heart of It</em></h2>
             <div class="journey-place">Afghanistan · Central Asia</div>
-            <div class="journey-note">
-              <p>
-                Nobody goes to Afghanistan for leisure. I went because I had to know what was real. What I found was a country of staggering, heartbreaking beauty — ancient hospitality in the middle of modern chaos.
-              </p>
-              <p>
-                I stayed with Taliban hosts in remote areas, shared meals with people the world had largely written off, and stood at the feet of the Bamiyan Buddhas — the great carved giants the world mourned when they were blown apart, now silent cliff faces watching over a valley that still carries their memory.
-              </p>
-              <p>
-                This is not the Afghanistan of the news cycle. Full story and travel guide coming.
-              </p>
-            </div>
+            <p class="journey-note">
+              Nobody goes to Afghanistan for leisure. I went because I had to know what was real. What I found was a country of staggering beauty — ancient hospitality in the middle of modern chaos. I stayed with Taliban hosts, stood at the feet of the Bamiyan Buddhas, and camped alone in valleys that carry two thousand years of history.
+            </p>
             <div class="journey-highlights">
               <span class="highlight-chip">Bamiyan Buddhas</span>
               <span class="highlight-chip">Taliban hospitality</span>
-              <span class="highlight-chip">Bamiyan Valley</span>
               <span class="highlight-chip">Solo camping</span>
               <span class="highlight-chip">Adventure travel</span>
             </div>
-            <span class="story-coming">Full story coming</span>
-          </div>
+            <span class="journey-read">Read story →</span>
+          </a>
 
           <!-- ── Silk Route ── -->
-          <div class="journey-item">
+          <a class="journey-item" href="travel-silk-route.html">
             <div class="journey-meta">
               <span class="journey-date">2022–23</span>
               <span class="journey-tag">Solo · Overland</span>
             </div>
             <h2 class="journey-headline">The Silk Route — <em>Following the Oldest Road in the World</em></h2>
-            <div class="journey-place">Central Asia · Iran · Caucasus</div>
-            <div class="journey-note">
-              <p>
-                Merchants, conquerors, monks, and wanderers have walked this corridor for two thousand years. I followed the route overland — through mountain passes, across steppe, through bazaars that smell of spice and dust and time.
-              </p>
-              <p>
-                The Silk Route is not a single road. It is a dozen overlapping trails, a web of empire and trade connecting East to West. Traveling it solo means making choices constantly: which path, which border, which stranger to trust.
-              </p>
-              <p>
-                Full journey account and practical guide coming.
-              </p>
-            </div>
+            <div class="journey-place">Central Asia · Overland</div>
+            <p class="journey-note">
+              Merchants, conquerors, monks, and wanderers have walked this corridor for two thousand years. I followed the route overland — through mountain passes, across steppe, through bazaars that smell of spice and dust and time.
+            </p>
             <div class="journey-highlights">
               <span class="highlight-chip">Overland</span>
               <span class="highlight-chip">Border crossings</span>
               <span class="highlight-chip">Ancient trade routes</span>
               <span class="highlight-chip">Solo</span>
             </div>
-            <span class="story-coming">Full story coming</span>
-          </div>
+            <span class="journey-read">Read story →</span>
+          </a>
 
           <!-- ── Uzbekistan ── -->
-          <div class="journey-item">
+          <a class="journey-item" href="travel-uzbekistan.html">
             <div class="journey-meta">
               <span class="journey-date">2023</span>
               <span class="journey-tag">Solo · Accidental</span>
             </div>
             <h2 class="journey-headline">Uzbekistan — <em>The Remote Village I Found by Mistake</em></h2>
             <div class="journey-place">Uzbekistan · Central Asia</div>
-            <div class="journey-note">
-              <p>
-                I did not plan to end up here. A missed connection, a wrong bus, a language barrier that turned into an invitation — and I was in a village so small it might not appear on any map I could find.
-              </p>
-              <p>
-                The people fed me without asking anything. The nights were cold and totally quiet. I took the longest train journey of my life to eventually leave, watching the steppe unspool for days through a smudged window, thinking about how the best things happen when you're trying to do something else.
-              </p>
-              <p>
-                Full story and practical notes for Central Asia travel coming.
-              </p>
-            </div>
+            <p class="journey-note">
+              A missed connection, a wrong bus, a language barrier that turned into an invitation — and I was in a village so small it might not appear on any map. I took the longest train journey of my life to eventually leave, watching the steppe unspool for days through a smudged window.
+            </p>
             <div class="journey-highlights">
               <span class="highlight-chip">Remote village</span>
               <span class="highlight-chip">Longest train journey</span>
               <span class="highlight-chip">Accidental adventure</span>
               <span class="highlight-chip">Samarkand</span>
-              <span class="highlight-chip">Bukhara</span>
             </div>
-            <span class="story-coming">Full story coming</span>
-          </div>
+            <span class="journey-read">Read story →</span>
+          </a>
 
           <!-- ── Kazakhstan ── -->
-          <div class="journey-item">
+          <a class="journey-item" href="travel-kazakhstan.html">
             <div class="journey-meta">
               <span class="journey-date">2023</span>
               <span class="journey-tag">Solo · Camping</span>
             </div>
             <h2 class="journey-headline">Kazakhstan — <em>Almaty, Bekatata & the Mangystau Wilderness</em></h2>
             <div class="journey-place">Kazakhstan · Central Asia</div>
-            <div class="journey-note">
-              <p>
-                Most people who go to Kazakhstan stop in Almaty — a cosmopolitan city backed against the Tian Shan mountains, where Soviet concrete gives way to alpine trails. I used it as a staging point for something further and stranger.
-              </p>
-              <p>
-                Western Kazakhstan — the Mangystau region — is one of the most alien landscapes on Earth. Chalk canyons, underground mosques carved into rock, the dead calm of the Caspian coast. I camped alone in Mangystau for days, cooking over a small flame, watching the light go strange in the evenings.
-              </p>
-              <p>
-                Bekatata, the underground mosque built by a 14th-century Sufi mystic into a cliff face — it is the kind of place that makes you understand why people have always needed holy ground.
-              </p>
-              <p>
-                Full story and camping guide coming.
-              </p>
-            </div>
+            <p class="journey-note">
+              Most people stop in Almaty. I used it as a staging point for Mangystau — one of the most alien landscapes on Earth. Chalk canyons, an underground Sufi mosque carved into a cliff face, and weeks camping alone on the Caspian steppe.
+            </p>
             <div class="journey-highlights">
               <span class="highlight-chip">Almaty</span>
               <span class="highlight-chip">Mangystau</span>
               <span class="highlight-chip">Bekatata Mosque</span>
               <span class="highlight-chip">Solo camping</span>
-              <span class="highlight-chip">Chalk canyons</span>
               <span class="highlight-chip">Caspian coast</span>
             </div>
-            <span class="story-coming">Full story coming</span>
-          </div>
+            <span class="journey-read">Read story →</span>
+          </a>
 
         </div>
 
@@ -346,7 +320,7 @@
 
         <div style="padding-bottom: 5rem; max-width: 480px;">
           <p style="font-family: var(--serif); font-style: italic; font-size: 1.1rem; font-weight: 300; color: var(--ink-soft); line-height: 1.8;">
-            "The world is a book, and those who do not travel read only one page."
+            "Not all those who wander are lost."
           </p>
         </div>
 

@@ -24,11 +24,18 @@
       padding: 1.8rem 0;
       border-bottom: 1px solid var(--rule);
       text-decoration: none;
-      transition: none;
+      transition: background 0.15s;
     }
 
     .post-item:first-child {
       border-top: 1px solid var(--rule);
+    }
+
+    .post-item:hover {
+      background: var(--card-hover);
+      margin: 0 calc(-1 * var(--pad));
+      padding-left: var(--pad);
+      padding-right: var(--pad);
     }
 
     .post-item:hover .post-title {
@@ -69,7 +76,6 @@
       line-height: 1.6;
       margin-top: 0.4rem;
       max-width: 500px;
-      /* Clamp to 2 lines — keeps the list uniform regardless of excerpt length */
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -86,17 +92,17 @@
 
     .category-row {
       display: flex;
-      flex-wrap: wrap;   /* new categories just wrap to next row */
+      flex-wrap: wrap;
       gap: 1px;
       background: var(--rule);
       border: 1px solid var(--rule);
       margin-bottom: 3.5rem;
-      overflow: hidden;  /* keeps border clean when wrapping */
+      overflow: hidden;
     }
 
     .cat-btn {
-      flex: 1 1 auto;    /* shrinks and grows with content */
-      min-width: 80px;   /* never too squished */
+      flex: 1 1 auto;
+      min-width: 80px;
       padding: 0.9rem 1rem;
       background: var(--bg);
       font-family: var(--mono);
@@ -118,10 +124,6 @@
     }
 
     @media (max-width: 540px) {
-      .category-row {
-        flex-wrap: wrap;
-      }
-
       .cat-btn {
         flex: 0 0 calc(50% - 1px);
         font-size: 0.65rem;
@@ -133,13 +135,14 @@
         gap: 0.4rem;
       }
 
-      .post-date {
-        font-size: 0.62rem;
+      .post-item:hover {
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
       }
 
-      .post-title {
-        font-size: 1.2rem;
-      }
+      .post-date { font-size: 0.62rem; }
+      .post-title { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -169,58 +172,46 @@
 
       <!-- Category filter -->
       <div class="category-row">
-        <button class="cat-btn active">All</button>
-        <button class="cat-btn">Psychology</button>
-        <button class="cat-btn">Building</button>
-        <button class="cat-btn">Life</button>
-        <button class="cat-btn">Others</button>
+        <button class="cat-btn active" data-cat="all">All</button>
+        <button class="cat-btn" data-cat="Psychology">Psychology</button>
+        <button class="cat-btn" data-cat="Building">Building</button>
+        <button class="cat-btn" data-cat="Life">Life</button>
+        <button class="cat-btn" data-cat="Others">Others</button>
       </div>
 
-      <!-- Post list — add your posts here -->
       <div class="post-list">
 
-        <a href="#" class="post-item">
+        <a href="post-why-we-resist-change.html" class="post-item" data-category="Psychology">
           <div>
             <div class="post-meta">
               <span class="post-tag">Psychology</span>
             </div>
-            <div class="post-title">Add your post title here</div>
-            <p class="post-excerpt">A short description of what this post is about. One or two sentences is enough.</p>
+            <div class="post-title">Why We Fear What We Want</div>
+            <p class="post-excerpt">The strange logic of self-sabotage, and why the things we desire most are often the ones we run from.</p>
           </div>
-          <div class="post-date">Add date</div>
+          <div class="post-date">May 2026</div>
         </a>
 
-        <a href="#" class="post-item">
+        <a href="post-shipping-in-silence.html" class="post-item" data-category="Building">
           <div>
             <div class="post-meta">
               <span class="post-tag">Building</span>
             </div>
-            <div class="post-title">Add your post title here</div>
-            <p class="post-excerpt">A short description of what this post is about. One or two sentences is enough.</p>
+            <div class="post-title">Shipping in Silence</div>
+            <p class="post-excerpt">On building things without an audience, and why the absence of external validation is not the same as failure.</p>
           </div>
-          <div class="post-date">Add date</div>
+          <div class="post-date">Apr 2026</div>
         </a>
 
-        <a href="#" class="post-item">
+        <a href="post-on-being-alone.html" class="post-item" data-category="Life">
           <div>
             <div class="post-meta">
               <span class="post-tag">Life</span>
             </div>
-            <div class="post-title">Add your post title here</div>
-            <p class="post-excerpt">A short description of what this post is about. One or two sentences is enough.</p>
+            <div class="post-title">On Being Alone and Not Being Lonely</div>
+            <p class="post-excerpt">The difference between solitude and loneliness, and what months of solo travel taught me about the value of your own company.</p>
           </div>
-          <div class="post-date">Add date</div>
-        </a>
-
-        <a href="#" class="post-item">
-          <div>
-            <div class="post-meta">
-              <span class="post-tag">Psychology</span>
-            </div>
-            <div class="post-title">Add your post title here</div>
-            <p class="post-excerpt">A short description of what this post is about. One or two sentences is enough.</p>
-          </div>
-          <div class="post-date">Add date</div>
+          <div class="post-date">Mar 2026</div>
         </a>
 
       </div>
@@ -241,12 +232,22 @@
   </footer>
 
   <script>
-    // Simple category filter
     const btns = document.querySelectorAll('.cat-btn');
+    const posts = document.querySelectorAll('.post-item');
+
     btns.forEach(btn => {
       btn.addEventListener('click', () => {
         btns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
+        const cat = btn.dataset.cat;
+        posts.forEach(post => {
+          if (cat === 'all' || post.dataset.category === cat) {
+            post.style.display = '';
+          } else {
+            post.style.display = 'none';
+          }
+        });
       });
     });
   </script>
